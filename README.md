@@ -9,8 +9,8 @@ The front panel is composed of:
  - 1 IR receiver (not used)
 
  ## Sketch ##
- ```
   ### digits ###
+ ```
   (+)
      °---------------------------------+
                                        |
