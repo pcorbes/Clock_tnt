@@ -8,7 +8,7 @@ The front panel is composed of:
  - 7 push buttons
  - 1 IR receiver (not used)
 
- ##Sketch##
+ ## Sketch ##
  ```
   ### digits ###
   (+)
