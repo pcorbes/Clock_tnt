@@ -8,9 +8,9 @@ The front panel is composed of:
  - 7 push buttons
  - 1 IR receiver (not used)
 
- Sketch:
- 
-  ##### digits #####
+ ##Sketch##
+ ```
+  ### digits ###
   (+)
      °---------------------------------+
                                        |
@@ -26,15 +26,15 @@ The front panel is composed of:
                                  +-+--------+
   CP                               |
      °-----------------------------+
-
-  ##### Buttons #####
-
+```
+  ### Buttons ###
+```
   /HRM, /HRP, /MNM, /MNP
      °----------------------------------+
                                         |
                                      #-\
   GND                                   |
      °----------------------------------+
-
+```
 This project has been developped on an Arduino Leonardo but it can run on many other boards.
 You needs to install the "DS3231" library.
