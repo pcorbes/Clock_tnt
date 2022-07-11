@@ -19,19 +19,19 @@ The front panel is composed of:
   5V  o---------------------+--+--+--+
                             |  |  |  |
   /DG4                      |  |  | |/
-  #9  o-----------------------------|\
+  #9  o-----------------------------|\ QD4
                             |  |  |  |
                             |  |  |  |
   /DG3                      |  | |/  |
-  #8  o--------------------------|\  |
+  #8  o--------------------------|\  | QD3
                             |  |  |  |
                             |  |  |  |
   /DG2                      | |/  |  |
-  #7  o-----------------------|\  |  |
+  #7  o-----------------------|\  |  | QD2
                             |  |  |  |
                             |  |  |  |
   /DG1                     |/  |  |  |
-  #6  o--------------------|\  |  |  |
+  #6  o--------------------|\  |  |  | QD1
                             |  |  |  |
                          +--+--+--+--+--+
                          | Digit1,2,3,4 |
@@ -223,10 +223,10 @@ void setup()
   gMsg[2] = digitShape[gMinute/10%10];
   gMsg[3] = digitShape[gMinute%10];
   gMsg[4] = digitShape[DIGIT_BLANK];
-  gMsg[5] = digitShape[gHour/10%10];
-  gMsg[6] = digitShape[gHour%10] | SEG_DOT;
-  gMsg[7] = digitShape[(gMinute)/10%10];
-  gMsg[8] = digitShape[(gMinute)%10];
+  gMsg[5] = gMsg[0];
+  gMsg[6] = gMsg[1];
+  gMsg[7] = gMsg[2];
+  gMsg[8] = gMsg[3];
 
   gNoRepeat = 0;
 }
@@ -240,21 +240,22 @@ void loop()
   
   // Check minute change
   if (mn != gMinute) {
+    uint8_t i = 0;
     gHour = hr % 24;
     gMinute = mn % 60;
     if (mn % 15 == 0) {
-      gMsg[5] = digitShape[gHour/10%10];
-      gMsg[6] = digitShape[gHour%10] | SEG_DOT;
-      gMsg[7] = digitShape[gMinute/10%10];
-      gMsg[8] = digitShape[gMinute%10];
+      // Display new time at the right of the actual time and scroll
+      i = 5; 
       gMsgl = 9;
       gScroll = DEFAULT_SCROLL_LOOP;
-    } else {
-      gMsg[0] = digitShape[gHour/10%10];
-      gMsg[1] = digitShape[gHour%10] | SEG_DOT;
-      gMsg[2] = digitShape[gMinute/10%10];
-      gMsg[3] = digitShape[gMinute%10];
     }
+    if ( gHour/10%10 == 0)
+      gMsg[i++] = digitShape[DIGIT_BLANK];
+    else
+      gMsg[i++] = digitShape[gHour/10%10];
+    gMsg[i++] = digitShape[gHour%10] | SEG_DOT;
+    gMsg[i++] = digitShape[gMinute/10%10];
+    gMsg[i++] = digitShape[gMinute%10];
   }
  
   // Display time
