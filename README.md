@@ -1,4 +1,7 @@
 # Clock_tnt
+![Clock-tnt](clock-tnt.png)  
+*When your box no longer displays the time, you recycle an old tnt receiver.*  
+  
 Clock based on a Digital Terrestrial Receiver (TNT) module,  
 Brand: SilverCrest  
 Model: "SL 65 T" sold by Lidl  
@@ -8,9 +11,9 @@ The front panel is composed of:
  - 7 push buttons
  - 1 IR receiver (not used)
 
- ## Sketch ##
-  ### digits ###
- ```
+## Sketch ##
+### digits ###
+```
   (+)
   5V  o---------------------+--+--+--+
                             |  |  |  |
@@ -39,7 +42,7 @@ The front panel is composed of:
   CP                         |
   #5  o----------------------+
 ```
-  ### Buttons ###
+### Buttons ###
 ```
   /HRM         /HRP         /MNM         /MNP
   #10 o-----+  #11 o-----+  #12 o-----+  #13 o-----+
